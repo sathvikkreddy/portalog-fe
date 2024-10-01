@@ -2,13 +2,17 @@ import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
-import { Container, Typography } from "@mui/material";
+import { CssBaseline, ThemeProvider } from "@mui/material";
 import { AuthProvider } from "./contexts/AuthContext";
 import ProtectedRoute from "./components/ProtectedRoute";
+import { lightTheme } from "./themes/LightTheme";
 
 function App() {
   return (
-    <BrowserRouter>
+    
+    <ThemeProvider theme={lightTheme}>
+      <CssBaseline/>
+      <BrowserRouter>
           <AuthProvider>
           <Routes>
             <Route path="/login" element={<Login />} />
@@ -16,6 +20,9 @@ function App() {
           </Routes>
           </AuthProvider>
     </BrowserRouter>
+        
+    </ThemeProvider>
+    
   );
 }
 
